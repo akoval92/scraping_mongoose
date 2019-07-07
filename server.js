@@ -50,8 +50,6 @@ app.get("/scrape", function(req, res) {
         .find(".PromoSmall-title a.Link")
         .attr("href");
       
-
-
       result.summary = $(this)
       
       .find(".PromoSmall-content .PromoSmall-description")
