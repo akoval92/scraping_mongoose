@@ -7,7 +7,6 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-// fix models files************************************
 var db = require("./models");
 
 var PORT = 3000;
@@ -20,7 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+var exphbs = require("express-handlebars");
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB local********************************************************
 // mongoose.connect("mongodb://localhost/mongoose_scrape", { useNewUrlParser: true });
