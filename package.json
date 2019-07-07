@@ -1,0 +1,27 @@
+{
+  "name": "scraping_mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akoval92/scraping_mongoose.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akoval92/scraping_mongoose/issues"
+  },
+  "homepage": "https://github.com/akoval92/scraping_mongoose#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.1.2",
+    "mongoose": "^5.6.2",
+    "morgan": "^1.9.1"
+  }
+}
