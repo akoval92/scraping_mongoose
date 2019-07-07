@@ -23,13 +23,13 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB local********************************************************
-mongoose.connect("mongodb://localhost/mongoose_scrape", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/mongoose_scrape", { useNewUrlParser: true });
 
 // For Heroku deployment****************************************************************
 
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongo_scrape";
 
-// mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 
 
 app.get("/scrape", function(req, res) {
