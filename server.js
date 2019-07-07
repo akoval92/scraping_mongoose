@@ -23,7 +23,7 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB local********************************************************
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/mongoose_scrape", { useNewUrlParser: true });
 
 // For Heroku deployment****************************************************************
 
