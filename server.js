@@ -1,37 +1,35 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-// add handlebars
 
+// add handlebars**************************************
 
-// Our scraping tools
-// Axios is a promised-based http library, similar to jQuery's Ajax method
-// It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
 
-// Require all models
+// fix models files************************************
 var db = require("./models");
 
 var PORT = 3000;
 
-// Initialize Express
 var app = express();
 
-// Configure middleware
 
-// Use morgan logger for logging requests
 app.use(logger("dev"));
-// Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI);
+
+// Connect to the Mongo DB local********************************************************
+mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+
+// For Heroku deployment****************************************************************
+
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// mongoose.connect(MONGODB_URI);
 
 
 app.get("/scrape", function(req, res) {
@@ -48,20 +46,23 @@ app.get("/scrape", function(req, res) {
         .find(".PromoSmall-title a.Link")
         .text();
 
-     
-        
       result.link = $(this)
         .find(".PromoSmall-title a.Link")
         .attr("href");
+      
+
+
+      result.summary = $(this)
+      
+      .find(".PromoSmall-content .PromoSmall-description")
+      .text();
+
+      // console logging all results
       console.log(result);
-
-
-         // description
-
 
     });
 
-    res.send('OK');
+    res.send('Scraped from https://www.sandiegouniontribune.com/');
   });
 });
 
